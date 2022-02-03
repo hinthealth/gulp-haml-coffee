@@ -1,7 +1,7 @@
 var map = require('map-stream');
 var rext = require('replace-ext');
 var hamlc = require('haml-coffee');
-var gutil = require('gulp-util');
+var PluginError = require('plugin-error');
 
 module.exports = function(options) {
   if(!options) options = {};
@@ -23,7 +23,7 @@ module.exports = function(options) {
         file.path = rext(file.path, ".html");
       }
     } catch (e) {
-      throw new gutil.PluginError('gulp-haml-coffee',
+      throw new PluginError('gulp-haml-coffee',
         'Error compiling ' + file.path + ': ' + e, {
         showStack: true
       });
